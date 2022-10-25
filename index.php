@@ -17,13 +17,24 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function loginLogout() {
+            var currentText = '<?php echo $righttext; ?>';
+            if(currentText != "Login/Signup") {
+                return window.location.href = 'logout.php';
+            }
+            else {
+                return window.location.href = 'login.php';
+            }
+        }
+    </script>
 </head>
 <body>
     <nav class = "topbar">
         <div class = "item large"> Indian Railways </div>
         <div class = "item"> Search </div>
         <div class = "item"> History </div>
-        <div class = "item end" onclick = "window.location.href = 'login.php'"><?php echo $righttext ?></div>
+        <div class = "item end" onclick = "loginLogout()"><?php echo $righttext ?></div>
     </nav>
 </body>
 </html>
