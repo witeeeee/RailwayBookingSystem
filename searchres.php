@@ -80,6 +80,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["noTrains"] = $traincount;
             $_SESSION["trainNames"] = $trainnames;
             $_SESSION["trainSeats"] = $trainseats;
+            $_SESSION["to"] = $to;
+            $_SESSION["from"] = $from;
+            $_SESSION["date"] = $when;
             header("location: searchres.php");
         }
     }
@@ -137,7 +140,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
         </div>
         <div class = "float-child">
-            <h1> <?php echo $_SESSION["noTrains"] ?> trains found</h1> <br>
+            <h1> <?php echo $_SESSION["noTrains"] ?> trains found</h1> 
+            <h3> <?php echo $_SESSION["from"]; ?> to <?php echo $_SESSION["to"]; ?> on <?php echo $_SESSION["date"]; ?></h3><br>
             <div id = "results">
 
             </div>

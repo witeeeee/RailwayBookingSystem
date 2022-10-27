@@ -80,6 +80,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["noTrains"] = $traincount;
             $_SESSION["trainNames"] = $trainnames;
             $_SESSION["trainSeats"] = $trainseats;
+            $_SESSION["to"] = $to;
+            $_SESSION["from"] = $from;
+            $_SESSION["date"] = $when;
             header("location: searchres.php");
         }
     }
