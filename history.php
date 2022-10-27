@@ -6,8 +6,12 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     $righttext = "Hello, ".$_SESSION["username"];
 }
 else {
-    $righttext = "Login/Signup";
+    header("location: login.php");
+    exit;
 }
+
+
+
 ?>
 
 <html lang="en">
@@ -34,7 +38,7 @@ else {
     <nav class = "topbar">
         <div class = "item large"> Indian Railways </div>
         <div class = "item" onclick = "window.location.href = 'search.php'"> Search </div>
-        <div class = "item" onclick = "window.location.href = 'history.php'"> History </div>
+        <div class = "item" onclick = "window.location.href = 'history.php'"> <u>History</u> </div>
         <div class = "item end" onclick = "loginLogout()"><?php echo $righttext ?></div>
     </nav>
 </body>

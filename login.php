@@ -85,12 +85,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; background-color: #F4EEDE; background-image: url("vaccine.jpg"); background-repeat: no-repeat; background-size: cover}
-        .topleft { width: 25%; height: 100vh; padding: 30px; border: 3px solid #E7CEB5; border-radius: 5px;}
-    </style>
+    <link rel = "stylesheet" href = "style.css">
 </head>
-
+<body>
     <div class="topleft"; style = "background-color: #FFFFFF">
         <h1><b>Login</b><br><br></h1>
 
@@ -99,7 +96,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }        
         ?>
-
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Username</label>

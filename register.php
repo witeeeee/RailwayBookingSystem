@@ -101,13 +101,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; background-color: #F4EEDE; background-image: url("vaccine.jpg"); background-repeat: no-repeat; background-size: cover}
-        .wrapper{ width: 360px; padding: 20px; }
-        .center{ margin: auto; width: 25%; padding: 30px; border: 3px solid #E7CEB5; border-radius: 5px; position: absolute; top: 28%; left: 38%}
-        .bottom{ position: absolute; bottom:0; margin: auto; width: 100%}
-        .topleft { width: 25%; height: 100vh; padding: 30px; border: 3px solid #E7CEB5; border-radius: 5px;}
-    </style>
+    <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
     <div class="topleft"; style = "background: #FFFFFF">
