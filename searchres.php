@@ -146,23 +146,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </div>
             <script defer>
+
+                function booking(i) {
+                    document.cookie = escape("selected") + "=" + escape(i);
+                    window.location.href = "booking.php";
+                }
+
                 var id = document.getElementById("results");
                 var n = <?php echo $_SESSION["noTrains"]; ?>;
                 var trainlist = <?php echo json_encode($_SESSION["foundTrains"]); ?>;
                 var trainnames = <?php echo json_encode($_SESSION["trainNames"]); ?>;
                 var trainseats = <?php echo json_encode($_SESSION["trainSeats"]); ?>;
 
-                for(var i = 0; i<n; i++) {
-                    var resbox = document.createElement("div");
-                    var trainheading = document.createElement("h3");
+                for(let i = 0; i<n; i++) {
+                    let resbox = document.createElement("div");
+                    let trainheading = document.createElement("h3");
                     trainheading.innerHTML = trainnames[i];
-                    var trainnumber = document.createElement("p");
+                    let trainnumber = document.createElement("p");
                     trainnumber.innerHTML = trainlist[i];
-                    var trainseat = document.createElement("p");
+                    let trainseat = document.createElement("p");
                     trainseat.innerHTML = "Available Seats: " + trainseats[i];
+                    let book = document.createElement("button");
+                    book.innerHTML = "Book";
+                    book.onclick = () => booking(i);
                     resbox.appendChild(trainheading);
                     resbox.appendChild(trainnumber);
                     resbox.appendChild(trainseat);
+                    resbox.appendChild(book);
                     resbox.classList.add("resultBoxes");
                     id.appendChild(resbox);
                 }
