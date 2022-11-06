@@ -84,11 +84,11 @@ while($row2 = mysqli_fetch_array($res2)) {
         <div class = "item end" onclick = "loginLogout()"><?php echo $righttext; ?></div>
     </nav>
     <div> 
-        <h1> Active bookings </h1>
+        <h1 class = "blur"> Active bookings </h1>
         <div id = "active">
 
         </div>
-        <h1> Past bookings </h1>
+        <h1 class = "blur"> Past bookings </h1>
         <div id = "inactive">
 
         </div>

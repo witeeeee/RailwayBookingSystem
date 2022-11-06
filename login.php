@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty($username_err) && empty($password_err)){
 
-        $sql = "SELECT id, username, password, elevated FROM users WHERE username = ?";
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
@@ -41,9 +41,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
 
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $elevated);
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password) && $elevated == 0){
+                        if($password == $hashed_password || password_verify($password, $hashed_password)){
  
                             session_start();
 
@@ -52,15 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
 
                             header("location: index.php");
-                        } else if(password_verify($password, $hashed_password)){
-
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;  
-                            $_SESSION["elevated"] = true;
-                            header("location: su.php");
-                        
-                        }else{
+                        } else{
                             $login_err = "Invalid username or password.";
                         }
                     }
@@ -88,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-    <div class="topleft"; style = "background-color: #FFFFFF">
+    <div class="topleft">
         <h1><b>Login</b><br><br></h1>
 
         <?php 

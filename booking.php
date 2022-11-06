@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <span style = "color: red;"><?php echo $form_err; ?></span>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Search" style = "width: 100%">
+                    <input type="submit" class="btn btn-primary" value="Book" style = "width: 100%">
                 </div>
             </form>
         </div>
