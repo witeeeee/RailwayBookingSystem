@@ -78,7 +78,7 @@ while($row2 = mysqli_fetch_array($res2)) {
 </head>
 <body>
     <nav class = "topbar">
-        <div class = "item large"> Indian Railways </div>
+        <div class = "item large" onclick = "window.location.href = 'index.php'"> Indian Railways </div>
         <div class = "item" onclick = "window.location.href = 'search.php'"> Search </div>
         <div class = "item" onclick = "window.location.href = 'history.php'"> <u>History</u> </div>
         <div class = "item end" onclick = "loginLogout()"><?php echo $righttext; ?></div>
@@ -120,7 +120,9 @@ while($row2 = mysqli_fetch_array($res2)) {
             let inactive = document.getElementById("inactive");
 
             for(let i = 0; i<n1; i++) {
+                let outerbox = document.createElement("div");
                 let resbox = document.createElement("div");
+                let bookbox = document.createElement("div");
                 let tname = document.createElement("h3");
                 tname.innerHTML = trainname[i];
                 let tno = document.createElement("p");
@@ -139,13 +141,18 @@ while($row2 = mysqli_fetch_array($res2)) {
                 resbox.appendChild(troute);
                 resbox.appendChild(tdate);
                 resbox.appendChild(tseats);
-                resbox.appendChild(cancel);
-                resbox.classList.add("resultBoxes");
-                active.appendChild(resbox);
+                bookbox.appendChild(cancel);
+                resbox.classList.add("searchInfo");
+                bookbox.classList.add("bookButton");
+                outerbox.classList.add("resultBoxes");
+                outerbox.appendChild(resbox);
+                outerbox.appendChild(bookbox);
+                active.appendChild(outerbox);
             }
 
             for(let j = 0; j<n2; j++) {
                 let resbox2 = document.createElement("div");
+                let outerbox2 = document.createElement("div");
                 let tname2 = document.createElement("h3");
                 tname2.innerHTML = itrainname[j];
                 let tno2 = document.createElement("p");
@@ -161,8 +168,10 @@ while($row2 = mysqli_fetch_array($res2)) {
                 resbox2.appendChild(troute2);
                 resbox2.appendChild(tdate2);
                 resbox2.appendChild(tseats2);
-                resbox2.classList.add("resultBoxes");
-                inactive.appendChild(resbox2);
+                resbox2.classList.add("searchInfo");
+                outerbox2.appendChild(resbox2);
+                outerbox2.classList.add("resultBoxes");
+                inactive.appendChild(outerbox2);
             }
         </script>
     </div>

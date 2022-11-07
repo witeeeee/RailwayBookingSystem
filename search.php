@@ -122,15 +122,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>To</label>
-                <input type="text" name="to" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                <input type="text" name="to" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
             </div>    
             <div class="form-group">
                 <label>From</label>
-                <input type="text" name="from" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                <input type="text" name="from" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
             </div>
             <div class="form-group">
                 <label>Date</label>
-                <input type="date" name="date" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                <input type="date" name="date" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
             </div>
             <span style = "color: red;"><?php echo $search_err; ?></span>
             <div class="form-group">

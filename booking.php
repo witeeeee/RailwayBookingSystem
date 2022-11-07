@@ -98,8 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <nav class = "topbar">
         <div class = "item large"> Indian Railways </div>
-        <div class = "item" onclick = "window.location.href = 'search.php'"> Search </div>
-        <div class = "item" onclick = "window.location.href = 'history.php'"> <u>History</u> </div>
+        <div class = "item" onclick = "window.location.href = 'search.php'"> <u>Search</u> </div>
+        <div class = "item" onclick = "window.location.href = 'history.php'"> History </div>
         <div class = "item end" onclick = "loginLogout()"><?php echo $righttext ?></div>
     </nav>
         <div class = "topleft">
@@ -107,19 +107,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
                     <label>First name</label>
-                    <input type="text" name="fname" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?>">
+                    <input type="text" name="fname" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?> blurInput">
                 </div>    
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" name="lname" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?>">
+                    <input type="text" name="lname" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?> blurInput">
                 </div>
                 <div class="form-group">
                     <label>Age</label>
-                    <input type="number" name="age" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?>">
+                    <input type="number" name="age" class="form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?> blurInput">
                 </div>
                 <div class = "form-group">
                     <label> Number of seats </label>
-                    <input type = "number" name = "seatcount" class = "form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?>">
+                    <input type = "number" name = "seatcount" class = "form-control <?php echo (!empty($form_err)) ? 'is-invalid' : ''; ?> blurInput">
                 </div>
                 <span style = "color: red;"><?php echo $form_err; ?></span>
                 <div class="form-group">

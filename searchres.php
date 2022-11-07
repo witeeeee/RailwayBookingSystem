@@ -123,15 +123,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
                         <label>To</label>
-                        <input type="text" name="to" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="to" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
                     </div>    
                     <div class="form-group">
                         <label>From</label>
-                        <input type="text" name="from" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="from" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
                     </div>
                     <div class="form-group">
                         <label>Date</label>
-                        <input type="date" name="date" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?>">
+                        <input type="date" name="date" class="form-control <?php echo (!empty($search_err)) ? 'is-invalid' : ''; ?> blurInput">
                     </div>
                     <span style = "color: red;"><?php echo $search_err; ?></span>
                     <div class="form-group">
@@ -159,7 +159,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 var trainseats = <?php echo json_encode($_SESSION["trainSeats"]); ?>;
 
                 for(let i = 0; i<n; i++) {
+                    let outerbox = document.createElement("div");
                     let resbox = document.createElement("div");
+                    let bookbox = document.createElement("div");
                     let trainheading = document.createElement("h3");
                     trainheading.innerHTML = trainnames[i];
                     let trainnumber = document.createElement("p");
@@ -172,9 +174,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     resbox.appendChild(trainheading);
                     resbox.appendChild(trainnumber);
                     resbox.appendChild(trainseat);
-                    resbox.appendChild(book);
-                    resbox.classList.add("resultBoxes");
-                    id.appendChild(resbox);
+                    bookbox.appendChild(book);
+                    resbox.classList.add("searchInfo");
+                    bookbox.classList.add("bookButton");
+                    outerbox.classList.add("resultBoxes");
+                    outerbox.appendChild(resbox);
+                    outerbox.appendChild(bookbox);
+                    id.appendChild(outerbox);
                 }
             </script>
         </div>

@@ -5,18 +5,17 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 input {
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid black;
 }
-
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 
 .topleft {
     width: 25%;
@@ -51,7 +50,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     height: 75vh;
     background-color: rgba(173, 173, 173, 0.21);
     backdrop-filter: blur(20px);
-    
 } 
 
 .float-childsmall {
@@ -80,6 +78,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     font-size: 20px;
     border-radius: 10px;
     height: fit-content;
+    display: flex;
 }
 
 .center { 
@@ -142,7 +141,6 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-
 .loginsignup {
     margin-right: 20px;
     font-size: 14px;
@@ -154,17 +152,31 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     text-decoration: underline;
 }
 
-.home-background-image{
-    background-image: url('src/train.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .background{
     background-color: #E7CEB5;
 }
 
-/* .btn-primary[style="width: 49%"]{
-    margin-left: 8px;
-} */
+.searchInfo {
+    width: fit-content;
+}
+
+.bookButton {
+    margin-left: auto;
+}
+
+.bookButton > button {
+    height: 100%;
+    width: 200px;
+    border-radius: 10px;
+    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.21);
+}
+
+.bookButton > button:hover {
+    background-color: rgba(248, 50, 0, 0.575);  
+}
+
+.blurInput {
+    background-color: rgba(255, 255, 255, 0.233) !important;
+    border: 2px solid black !important;
+}
