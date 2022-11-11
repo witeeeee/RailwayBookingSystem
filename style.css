@@ -156,6 +156,18 @@ td {
     align-items: center;
 }
 
+.footer {
+    position: absolute;
+    bottom: 20px;;
+    right: 20px;
+    background-color: rgba(173, 173, 173, 0.21);
+    backdrop-filter: blur(20px);
+    color: #19191a;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 .loginsignup {
     margin-right: 20px;
     font-size: 14px;

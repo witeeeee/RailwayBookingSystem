@@ -40,5 +40,10 @@ else {
             <span class = "item" style = "margin-right: 50px" onclick = "loginLogout()"><?php echo $righttext ?></span>
         </span>
     </nav>
+    <footer class = "footer">
+        <h4>A Project By: </h4>
+        <h4> 20BCE1353 - Siddharth S </h4>
+        <h4> 20BCE1643 - Avaneesh Shetye </h4>
+    </footer>
 </body>
 </html>
