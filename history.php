@@ -19,8 +19,9 @@ $seat = array();
 $from = array();
 $to = array();
 $bid = array();
+$class = array();
 
-$sql = "select trainno, trainname, date, seatcount, src, dest, bid from bookings where active = 1 and id = $uid";
+$sql = "select trainno, trainname, date, seatcount, src, dest, bid, class from bookings where active = 1 and id = $uid";
 $res = mysqli_query($link, $sql);
 $n1 = mysqli_num_rows($res);
 while($row = mysqli_fetch_array($res)) {
@@ -31,6 +32,7 @@ while($row = mysqli_fetch_array($res)) {
     array_push($from, $row[4]);
     array_push($to, $row[5]);
     array_push($bid, $row[6]);
+    array_push($class, $row[7]);
 }
 
 $_SESSION["activebid"] = $bid;
@@ -41,8 +43,9 @@ $idates = array();
 $iseat = array();
 $ifrom = array();
 $ito = array();
+$iclass = array();
 
-$sql2 = "select trainno, trainname, date, seatcount, src, dest from bookings where active = 0 and id = $uid";
+$sql2 = "select trainno, trainname, date, seatcount, src, dest, class from bookings where active = 0 and id = $uid";
 $res2 = mysqli_query($link, $sql2);
 $n2 = mysqli_num_rows($res2);
 while($row2 = mysqli_fetch_array($res2)) {
@@ -52,6 +55,7 @@ while($row2 = mysqli_fetch_array($res2)) {
     array_push($iseat, $row2[3]);
     array_push($ifrom, $row2[4]);
     array_push($ito, $row2[5]);
+    array_push($iclass, $row2[6]);
 }
 
 ?>
@@ -81,7 +85,10 @@ while($row2 = mysqli_fetch_array($res2)) {
         <div class = "item large" onclick = "window.location.href = 'index.php'"> Indian Railways </div>
         <div class = "item" onclick = "window.location.href = 'search.php'"> Search </div>
         <div class = "item" onclick = "window.location.href = 'history.php'"> <u>History</u> </div>
-        <div class = "item end" onclick = "loginLogout()"><?php echo $righttext; ?></div>
+        <span class = "end">
+            <span class = "item"  style = "margin-right: 50px" onclick = "window.location.href = 'profile.php'">Profile </span>
+            <span class = "item" style = "margin-right: 50px" onclick = "loginLogout()"><?php echo $righttext ?></span>
+        </span>
     </nav>
     <div> 
         <h1 class = "blur"> Active bookings </h1>
@@ -108,6 +115,7 @@ while($row2 = mysqli_fetch_array($res2)) {
             var seat = <?php echo json_encode($seat); ?>;
             var from = <?php echo json_encode($from); ?>;
             var to = <?php echo json_encode($to); ?>;
+            var clas = <?php echo json_encode($class); ?>;
  
             var itrainno = <?php echo json_encode($itrainno); ?>;
             var itrainname = <?php echo json_encode($itrainname); ?>;
@@ -115,6 +123,7 @@ while($row2 = mysqli_fetch_array($res2)) {
             var iseat = <?php echo json_encode($iseat); ?>;
             var ifrom = <?php echo json_encode($ifrom); ?>;
             var ito = <?php echo json_encode($ito); ?>;
+            var iclas = <?php echo json_encode($iclass); ?>;
 
             let active = document.getElementById("active");
             let inactive = document.getElementById("inactive");
@@ -124,23 +133,20 @@ while($row2 = mysqli_fetch_array($res2)) {
                 let resbox = document.createElement("div");
                 let bookbox = document.createElement("div");
                 let tname = document.createElement("h3");
-                tname.innerHTML = trainname[i];
-                let tno = document.createElement("p");
-                tno.innerHTML = trainno[i];
-                let tdate = document.createElement("p");
-                tdate.innerHTML = dates[i];
+                tname.innerHTML = trainno[i] + " " + trainname[i];
                 let tseats = document.createElement("p");
-                tseats.innerHTML = seat[i];
+                tseats.innerHTML = "<b>No of tickets:</b> " + seat[i];
                 let troute = document.createElement("P");
-                troute.innerHTML = from[i] + " to " + to[i];
+                troute.innerHTML = "<b>" + from[i] + "</b> to <b>" + to[i] + "</b> on <b>" + dates[i] + "</b>";
+                let tclass = document.createElement("p");
+                tclass.innerHTML = "<b>Class: </b>"+clas[i];
                 let cancel = document.createElement("button");
                 cancel.innerHTML = "Cancel";
                 cancel.onclick = () => cancellation(i);
                 resbox.appendChild(tname);
-                resbox.appendChild(tno);
                 resbox.appendChild(troute);
-                resbox.appendChild(tdate);
                 resbox.appendChild(tseats);
+                resbox.appendChild(tclass);
                 bookbox.appendChild(cancel);
                 resbox.classList.add("searchInfo");
                 bookbox.classList.add("bookButton");
@@ -154,20 +160,17 @@ while($row2 = mysqli_fetch_array($res2)) {
                 let resbox2 = document.createElement("div");
                 let outerbox2 = document.createElement("div");
                 let tname2 = document.createElement("h3");
-                tname2.innerHTML = itrainname[j];
-                let tno2 = document.createElement("p");
-                tno2.innerHTML = itrainno[j];
-                let tdate2 = document.createElement("p");
-                tdate2.innerHTML = idates[j];
+                tname2.innerHTML = itrainno[j] + " " + itrainname[j];
                 let tseats2 = document.createElement("p");
-                tseats2.innerHTML = iseat[j];
+                tseats2.innerHTML = "<b>No of tickets:</b> " + iseat[j];
                 let troute2 = document.createElement("p");
-                troute2.innerHTML = ifrom[j] + " to " + ito[j];
+                troute2.innerHTML = "<b>" + ifrom[j] + "</b> to <b>" + ito[j] + "</b> on <b>" + idates[j] + "</b>";
+                let tclass2 = document.createElement("p");
+                tclass2.innerHTML = "<b>Class: </b>"+iclas[j];
                 resbox2.appendChild(tname2);
-                resbox2.appendChild(tno2);
                 resbox2.appendChild(troute2);
-                resbox2.appendChild(tdate2);
                 resbox2.appendChild(tseats2);
+                resbox2.appendChild(tclass2);
                 resbox2.classList.add("searchInfo");
                 outerbox2.appendChild(resbox2);
                 outerbox2.classList.add("resultBoxes");

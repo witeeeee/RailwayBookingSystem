@@ -115,7 +115,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class = "item large" onclick = "window.location.href = 'index.php'"> Indian Railways </div>
         <div class = "item" onclick = "window.location.href = 'search.php'"> <u>Search</u> </div>
         <div class = "item" onclick = "window.location.href = 'history.php'"> History </div>
-        <div class = "item end" onclick = "loginLogout()"><?php echo $righttext ?></div>
+        <span class = "end">
+            <span class = "item"  style = "margin-right: 50px" onclick = "window.location.href = 'profile.php'">Profile </span>
+            <span class = "item" style = "margin-right: 50px" onclick = "loginLogout()"><?php echo $righttext ?></span>
+        </span>
     </nav>
     <div class = "float-container">
         <div class = "topleft">
@@ -167,7 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     let trainnumber = document.createElement("p");
                     trainnumber.innerHTML = trainlist[i];
                     let trainseat = document.createElement("p");
-                    trainseat.innerHTML = "Available Seats: " + trainseats[i];
+                    trainseat.innerHTML = "<b>Available Seats:</b> " + trainseats[i];
                     let book = document.createElement("button");
                     book.innerHTML = "Book";
                     book.onclick = () => booking(i);

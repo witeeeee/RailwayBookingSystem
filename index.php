@@ -35,7 +35,10 @@ else {
         <div class = "item large"> Indian Railways </div>
         <div class = "item" onclick = "window.location.href = 'search.php'"> Search </div>
         <div class = "item" onclick = "window.location.href = 'history.php'"> History </div>
-        <div class = "item end" onclick = "loginLogout()"><?php echo $righttext ?></div>
+        <span class = "end">
+            <span class = "item"  style = "margin-right: 50px" onclick = "window.location.href = 'profile.php'">Profile </span>
+            <span class = "item" style = "margin-right: 50px" onclick = "loginLogout()"><?php echo $righttext ?></span>
+        </span>
     </nav>
 </body>
 </html>
